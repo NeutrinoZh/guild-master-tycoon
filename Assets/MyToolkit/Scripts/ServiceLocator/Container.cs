@@ -5,26 +5,44 @@ using UnityEngine.SceneManagement;
 
 namespace MTK.Services
 {
-    public class Container : MonoBehaviour
+    public class ServiceContainer : MonoBehaviour
     {
-        private static GameObject _globalInstance = null;
-        private static GameObject _sceneInstance = null;
 
+        private static ServiceContainer _globalInstance = null;
+        private static ServiceContainer _sceneInstance = null;
+
+        public static ServiceContainer Instance => _sceneInstance;
         private Dictionary<Type, IService> _services = new();
 
-        private void Awake()
+
+        [RuntimeInitializeOnLoadMethod]
+        private static void OnRuntimeMethodLoad()
         {
-            SceneManager.sceneLoaded += (Scene _, LoadSceneMode _) =>
-            {
-                Debug.Log("Scene Loaded");
-                _sceneInstance = new GameObject("SceneServicesContainer");
-                _sceneInstance.AddComponent<Container>();
-            };
+            if (_globalInstance)
+                return;
+
+            // Global Container
+            var globalInstance = new GameObject("GlobalServicesContainer");
+            _globalInstance = globalInstance.AddComponent<ServiceContainer>();
+            DontDestroyOnLoad(_globalInstance);
+
+            // Scene Container
+            CreateSceneContainer();
+            SceneManager.sceneLoaded += (Scene _, LoadSceneMode _) => CreateSceneContainer();
         }
 
-        public void Reset()
+        public static void CreateSceneContainer()
         {
-            _services.Clear();
+            if (_sceneInstance)
+                Destroy(_sceneInstance);
+
+            var sceneInstance = new GameObject("SceneServicesContainer");
+            _sceneInstance = sceneInstance.AddComponent<ServiceContainer>();
+        }
+
+        public void RegisterGlobal<T>(T service) where T : IService
+        {
+            _globalInstance._services.Add(typeof(T), service);
         }
 
         public void Register<T>(T service) where T : IService
@@ -36,21 +54,16 @@ namespace MTK.Services
 #endif
         }
 
-        public T Get<T>() where T : IService
+        public bool Contains<T>() where T : IService
         {
-            return (T)_services[typeof(T)];
+            return _services.ContainsKey(typeof(T));
         }
 
-        [RuntimeInitializeOnLoadMethod]
-        private static void OnRuntimeMethodLoad()
+        public T Get<T>() where T : IService
         {
-            if (_globalInstance)
-                return;
-
-            _globalInstance = new GameObject("GlobalServicesContainer");
-            _globalInstance.AddComponent<Container>();
-
-            DontDestroyOnLoad(_globalInstance);
+            if (Contains<T>())
+                return (T)_services[typeof(T)];
+            return (T)_globalInstance._services[typeof(T)];
         }
     }
 }

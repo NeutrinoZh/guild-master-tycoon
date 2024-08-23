@@ -56,7 +56,7 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "GuildMasterTycoon.sln",
+    "dotnet.defaultSolution": "guild-master-tycoon.sln",
     "cSpell.words": [
         "Dont"
     ]
