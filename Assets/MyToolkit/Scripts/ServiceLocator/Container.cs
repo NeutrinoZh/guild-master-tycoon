@@ -7,16 +7,13 @@ namespace MTK.Services
 {
     public class ServiceContainer : MonoBehaviour
     {
-
         private static ServiceContainer _globalInstance = null;
         private static ServiceContainer _sceneInstance = null;
 
         public static ServiceContainer Instance => _sceneInstance;
         private Dictionary<Type, IService> _services = new();
 
-
-        [RuntimeInitializeOnLoadMethod]
-        private static void OnRuntimeMethodLoad()
+        public static void Init()
         {
             if (_globalInstance)
                 return;
@@ -31,10 +28,10 @@ namespace MTK.Services
             SceneManager.sceneLoaded += (Scene _, LoadSceneMode _) => CreateSceneContainer();
         }
 
-        public static void CreateSceneContainer()
+        private static void CreateSceneContainer()
         {
             if (_sceneInstance)
-                Destroy(_sceneInstance);
+                return;
 
             var sceneInstance = new GameObject("SceneServicesContainer");
             _sceneInstance = sceneInstance.AddComponent<ServiceContainer>();
