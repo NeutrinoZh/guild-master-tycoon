@@ -1,1 +1,54 @@
-{}
+{
+    "name": "GMTActions",
+    "maps": [
+        {
+            "name": "Camera",
+            "id": "c155ff94-f992-4d80-ab55-7de98581609f",
+            "actions": [
+                {
+                    "name": "Position",
+                    "type": "Value",
+                    "id": "e845c4ad-39cb-4dac-925f-54e2ca503ac7",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Touch",
+                    "type": "Button",
+                    "id": "df130968-1bde-401c-bcbb-647222838a77",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "79f3e5b8-b546-4d00-a0dd-f16c752d00b7",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e92b0c8-73d5-468a-b0c9-1b86cb471d1d",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

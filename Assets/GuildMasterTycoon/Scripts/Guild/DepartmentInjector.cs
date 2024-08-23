@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GMT.GamePlay
 {
-    public class DepartmentFactory : MonoBehaviour
+    public class DepartmentInjector : MonoBehaviour
     {
         [SerializeField] private DepartmentSO _departmentData;
 

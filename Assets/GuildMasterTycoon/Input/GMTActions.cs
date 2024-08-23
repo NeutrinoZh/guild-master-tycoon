@@ -24,9 +24,62 @@ namespace GMT
         {
             asset = InputActionAsset.FromJson(@"{
     ""name"": ""GMTActions"",
-    ""maps"": [],
+    ""maps"": [
+        {
+            ""name"": ""Camera"",
+            ""id"": ""c155ff94-f992-4d80-ab55-7de98581609f"",
+            ""actions"": [
+                {
+                    ""name"": ""Position"",
+                    ""type"": ""Value"",
+                    ""id"": ""e845c4ad-39cb-4dac-925f-54e2ca503ac7"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Touch"",
+                    ""type"": ""Button"",
+                    ""id"": ""df130968-1bde-401c-bcbb-647222838a77"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""79f3e5b8-b546-4d00-a0dd-f16c752d00b7"",
+                    ""path"": ""<Pointer>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e92b0c8-73d5-468a-b0c9-1b86cb471d1d"",
+                    ""path"": ""<Pointer>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Touch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        }
+    ],
     ""controlSchemes"": []
 }");
+            // Camera
+            m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
+            m_Camera_Position = m_Camera.FindAction("Position", throwIfNotFound: true);
+            m_Camera_Touch = m_Camera.FindAction("Touch", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -83,6 +136,65 @@ namespace GMT
         public int FindBinding(InputBinding bindingMask, out InputAction action)
         {
             return asset.FindBinding(bindingMask, out action);
+        }
+
+        // Camera
+        private readonly InputActionMap m_Camera;
+        private List<ICameraActions> m_CameraActionsCallbackInterfaces = new List<ICameraActions>();
+        private readonly InputAction m_Camera_Position;
+        private readonly InputAction m_Camera_Touch;
+        public struct CameraActions
+        {
+            private @GMTActions m_Wrapper;
+            public CameraActions(@GMTActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Position => m_Wrapper.m_Camera_Position;
+            public InputAction @Touch => m_Wrapper.m_Camera_Touch;
+            public InputActionMap Get() { return m_Wrapper.m_Camera; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(CameraActions set) { return set.Get(); }
+            public void AddCallbacks(ICameraActions instance)
+            {
+                if (instance == null || m_Wrapper.m_CameraActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_CameraActionsCallbackInterfaces.Add(instance);
+                @Position.started += instance.OnPosition;
+                @Position.performed += instance.OnPosition;
+                @Position.canceled += instance.OnPosition;
+                @Touch.started += instance.OnTouch;
+                @Touch.performed += instance.OnTouch;
+                @Touch.canceled += instance.OnTouch;
+            }
+
+            private void UnregisterCallbacks(ICameraActions instance)
+            {
+                @Position.started -= instance.OnPosition;
+                @Position.performed -= instance.OnPosition;
+                @Position.canceled -= instance.OnPosition;
+                @Touch.started -= instance.OnTouch;
+                @Touch.performed -= instance.OnTouch;
+                @Touch.canceled -= instance.OnTouch;
+            }
+
+            public void RemoveCallbacks(ICameraActions instance)
+            {
+                if (m_Wrapper.m_CameraActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(ICameraActions instance)
+            {
+                foreach (var item in m_Wrapper.m_CameraActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_CameraActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public CameraActions @Camera => new CameraActions(this);
+        public interface ICameraActions
+        {
+            void OnPosition(InputAction.CallbackContext context);
+            void OnTouch(InputAction.CallbackContext context);
         }
     }
 }
