@@ -11,6 +11,7 @@ namespace GMT.GSM
         {
             ServiceContainer.Init();
             ServiceContainer.Instance.Register(new BuildingFactory());
+            ServiceContainer.Instance.Register(new PlayerInput());
         }
     }
 }
