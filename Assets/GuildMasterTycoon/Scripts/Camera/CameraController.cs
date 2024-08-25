@@ -1,21 +1,33 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 namespace GMT.GamePlay
 {
     public class CameraController : MonoBehaviour
     {
+        [SerializeField] private float _minCameraScale = 5f;
+        [SerializeField] private float _maxCameraScale = 30f;
+
+        [SerializeField] private float _moveSensitivity = 1f;
+        [SerializeField] private float _scaleSensitivity = 2f;
+
+        private Camera _camera;
         private PlayerInput _playerInput;
 
         private bool _drag = false;
         private Vector2 _touchPosition = Vector2.zero;
         private Vector3 _startPosition = Vector3.zero;
 
-        [SerializeField] private float _sensitivity = 5;
+        private Vector2 _firstTouchPosition = Vector2.zero;
+        private Vector2 _secondTouchPosition = Vector2.zero;
+        private float _startDelta = float.NaN;
+        private float _startSize = 5f;
 
         public void Init(PlayerInput playerInput)
         {
             _playerInput = playerInput;
+            _camera = GetComponent<Camera>();
         }
 
         private void Start()
@@ -32,11 +44,50 @@ namespace GMT.GamePlay
 
         private void Update()
         {
+            Drag();
+            Scale();
+        }
+
+        private void Scale()
+        {
+            int touchCount = Touchscreen.current.touches.Count;
+
+            if (touchCount < 2)
+                return;
+
+            var firstTouch = Touchscreen.current.touches[0];
+            var secondTouch = Touchscreen.current.touches[1];
+
+            if (firstTouch.isInProgress) _firstTouchPosition = firstTouch.position.ReadValue();
+            if (secondTouch.isInProgress) _secondTouchPosition = secondTouch.position.ReadValue();
+
+            if (firstTouch.isInProgress && secondTouch.isInProgress)
+            {
+                float delta = Camera.main.ScreenToViewportPoint(_secondTouchPosition - _firstTouchPosition).sqrMagnitude;
+                if (float.IsNaN(_startDelta))
+                {
+                    _startDelta = delta;
+                    _startSize = _camera.orthographicSize;
+                }
+
+                _camera.orthographicSize = Mathf.Clamp(
+                    _startSize - (delta - _startDelta) * (_camera.orthographicSize * _scaleSensitivity),
+                    _minCameraScale,
+                    _maxCameraScale
+                );
+            }
+            else
+                _startDelta = float.NaN;
+        }
+
+        private void Drag()
+        {
             if (!_drag)
                 return;
 
             var position = _playerInput.InputActions.Camera.Position.ReadValue<Vector2>();
-            transform.position = _startPosition - Camera.main.ScreenToViewportPoint(position - _touchPosition) * _sensitivity;
+            transform.position = _startPosition - Camera.main.ScreenToViewportPoint(position - _touchPosition) * (_camera.orthographicSize * _moveSensitivity);
+
         }
 
         private void DisableDrag(InputAction.CallbackContext _) => _drag = false;

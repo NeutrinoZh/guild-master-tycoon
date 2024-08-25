@@ -4,6 +4,7 @@
     },
     "dotnet.defaultSolution": "GuildMasterTycoon.sln",
     "cSpell.words": [
-        "Dont"
+        "Dont",
+        "Mathf"
     ]
 }
