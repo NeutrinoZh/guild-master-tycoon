@@ -80,12 +80,7 @@ namespace MTK
                         }
                         else
                         {
-                            navGraph.connections.Add(new()
-                            {
-                                fromId = _selectedFromIndex,
-                                toId = nearestPointIndex
-                            });
-
+                            navGraph.AddConnection(_selectedFromIndex, nearestPointIndex);
                             _selectedFromIndex = -1;
                         }
 
