@@ -6,5 +6,6 @@ namespace GMT.GamePlay
     public class BuildingSO : ScriptableObject
     {
         [field: SerializeField] public GameObject Prefab { get; private set; }
+        [field: SerializeField] public int Width { get; private set; }
     }
 }

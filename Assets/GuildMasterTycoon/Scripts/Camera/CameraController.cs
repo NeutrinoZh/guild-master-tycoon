@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 
 namespace GMT.GamePlay
 {
     public class CameraController : MonoBehaviour
     {
         [SerializeField] private float _minCameraScale = 5f;
-        [SerializeField] private float _maxCameraScale = 30f;
+        [SerializeField] private float _maxCameraScale = 40f;
 
         [SerializeField] private float _moveSensitivity = 1f;
         [SerializeField] private float _scaleSensitivity = 2f;
