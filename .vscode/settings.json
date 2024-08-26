@@ -5,6 +5,7 @@
     "dotnet.defaultSolution": "GuildMasterTycoon.sln",
     "cSpell.words": [
         "Dont",
+        "Encryptor",
         "Mathf",
         "UGUI"
     ]

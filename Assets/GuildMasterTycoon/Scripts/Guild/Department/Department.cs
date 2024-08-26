@@ -18,7 +18,7 @@ namespace GMT.GamePlay
             for (int i = 0; i < _departmentData.NumBuildings; ++i)
             {
                 var buildingSO = _departmentData.Building;
-                var building = _buildingFactory.CreateBuilding(buildingSO, transform);
+                var building = _buildingFactory.CreateBuilding(buildingSO, transform, _departmentData.DepartmentId, i);
                 building.transform.localPosition = new Vector3(i * buildingSO.Width * _departmentData.DirectionOfExpansion, 0, 0);
             }
 

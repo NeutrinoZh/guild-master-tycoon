@@ -1,25 +1,30 @@
-using MTK.Services;
 using System;
+
+using MTK.Services;
 
 namespace GMT.GamePlay
 {
     public class PlayerStats : IService
     {
         public event Action<PlayerStats> OnBalanceChanged;
+        public int Balance => _savesManager.Money;
 
-        public int Balance => _money;
+        public PlayerStats(SavesManager savesManager)
+        {
+            _savesManager = savesManager;
+        }
 
         public void AddMoney(int number)
         {
-            _money += number;
+            _savesManager.Money += number;
             OnBalanceChanged?.Invoke(this);
         }
 
         public bool TrySubtract(int number)
         {
-            if (_money - number >= 0)
+            if (_savesManager.Money - number >= 0)
             {
-                _money -= number;
+                _savesManager.Money -= number;
                 OnBalanceChanged?.Invoke(this);
 
                 return true;
@@ -28,7 +33,6 @@ namespace GMT.GamePlay
             return false;
         }
 
-        private int _money = 0;
-
+        private SavesManager _savesManager;
     }
 }

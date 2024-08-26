@@ -18,6 +18,8 @@ namespace GMT.UI
         {
             _playerStats = playerStats;
             _playerStats.OnBalanceChanged += UpdateHUD;
+
+            UpdateHUD(playerStats);
         }
 
         private void Awake()

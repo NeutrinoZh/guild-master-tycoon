@@ -12,6 +12,7 @@ namespace MTK.Services
 
         public static ServiceContainer Instance => _sceneInstance;
         private Dictionary<Type, IService> _services = new();
+        private Dictionary<Type, Action> _registerCallbacks = new();
 
         public static void Init()
         {
@@ -46,9 +47,23 @@ namespace MTK.Services
         {
             _services.Add(typeof(T), service);
 
+            if (_registerCallbacks.ContainsKey(typeof(T)))
+            {
+                _registerCallbacks[typeof(T)]?.Invoke();
+                _registerCallbacks.Remove(typeof(T));
+            }
+
 #if UNITY_EDITOR
             Debug.Log($"[MTK.Services] Register new service: {typeof(T)}");
 #endif
+        }
+
+        public void SetCallback<T>(Action callback)
+        {
+            if (_registerCallbacks.ContainsKey(typeof(T)))
+                _registerCallbacks[typeof(T)] += callback;
+            else
+                _registerCallbacks.Add(typeof(T), callback);
         }
 
         public bool Contains<T>() where T : IService
