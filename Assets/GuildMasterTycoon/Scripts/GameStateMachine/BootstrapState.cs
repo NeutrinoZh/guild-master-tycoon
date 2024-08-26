@@ -10,6 +10,7 @@ namespace GMT.GSM
         public override void OnEnter()
         {
             ServiceContainer.Init();
+            ServiceContainer.Instance.Register(new PlayerStats());
             ServiceContainer.Instance.Register(new BuildingFactory());
             ServiceContainer.Instance.Register(new PlayerInput());
         }
