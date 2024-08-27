@@ -49,6 +49,9 @@ namespace GMT.GamePlay
 
         private void Scale()
         {
+            if (Touchscreen.current == null)
+                return;
+
             int touchCount = Touchscreen.current.touches.Count;
 
             if (touchCount < 2)

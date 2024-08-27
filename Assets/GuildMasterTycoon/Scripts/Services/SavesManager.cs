@@ -11,6 +11,8 @@ namespace GMT.GamePlay
 {
     public class SavesManager : IService
     {
+        public event Action OnBuildingPurchase;
+
         public int Money
         {
             get => _gameData.money;
@@ -25,6 +27,8 @@ namespace GMT.GamePlay
         {
             _gameData.departments[departmentId].buildings[buildingId].purchased = true;
             _isDirty = true;
+
+            OnBuildingPurchase?.Invoke();
         }
 
         public void PurchaseWorker(int departmentId, int buildingId, int workerId)
@@ -36,6 +40,12 @@ namespace GMT.GamePlay
             _isDirty = true;
         }
 
+        public void CompleteTutorial()
+        {
+            _gameData.isTutorialCompleted = true;
+            _isDirty = true;
+        }
+
         public bool IsBuildingPurchased(int departmentId, int buildingId)
         {
             return _gameData.departments[departmentId].buildings[buildingId].purchased;
@@ -44,6 +54,11 @@ namespace GMT.GamePlay
         public bool IsWorkerPurchased(int departmentId, int buildingId, int workerId)
         {
             return _gameData.departments[departmentId].buildings[buildingId].workers.Contains(workerId);
+        }
+
+        public bool IsTutorialCompleted()
+        {
+            return _gameData.isTutorialCompleted;
         }
 
         public SavesManager()
@@ -86,6 +101,7 @@ namespace GMT.GamePlay
         [Serializable]
         private class GameData
         {
+            public bool isTutorialCompleted;
             public int money;
             public List<Department> departments;
         }
@@ -95,6 +111,7 @@ namespace GMT.GamePlay
         private static readonly GameData k_playerScoresDefaultData = new()
         {
             money = 1500,
+            isTutorialCompleted = false,
             departments = new()
             {
                 new()
@@ -109,12 +126,33 @@ namespace GMT.GamePlay
                         new()
                         {
                             purchased = false,
-                            workers=new(){0}
+                            workers=new(){}
                         },
                         new()
                         {
                             purchased = false,
-                            workers=new(){0}
+                            workers=new(){}
+                        }
+                    }
+                },
+                new()
+                {
+                    buildings=new()
+                    {
+                        new()
+                        {
+                            purchased = false,
+                            workers=new(){}
+                        },
+                        new()
+                        {
+                            purchased = false,
+                            workers=new(){}
+                        },
+                        new()
+                        {
+                            purchased = false,
+                            workers=new(){}
                         }
                     }
                 }

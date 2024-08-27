@@ -15,3 +15,4 @@ MonoBehaviour:
   <Prefab>k__BackingField: {fileID: 8151233683381824461, guid: 21c507caa268cf6428aca14a4493e1b5, type: 3}
   <Width>k__BackingField: 8
   <Price>k__BackingField: 1000
+  <TablePrice>k__BackingField: 150

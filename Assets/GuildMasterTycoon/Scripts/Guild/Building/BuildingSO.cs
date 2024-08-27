@@ -8,5 +8,6 @@ namespace GMT.GamePlay
         [field: SerializeField] public GameObject Prefab { get; private set; }
         [field: SerializeField] public int Width { get; private set; }
         [field: SerializeField] public int Price { get; private set; }
+        [field: SerializeField] public int TablePrice { get; private set; }
     }
 }

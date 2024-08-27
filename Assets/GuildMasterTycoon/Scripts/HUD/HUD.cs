@@ -18,8 +18,6 @@ namespace GMT.UI
         {
             _playerStats = playerStats;
             _playerStats.OnBalanceChanged += UpdateHUD;
-
-            UpdateHUD(playerStats);
         }
 
         private void Awake()
@@ -31,6 +29,11 @@ namespace GMT.UI
 
             _adventurersTextPattern = _adventurersTextMesh.text;
             _moneyTextPattern = _moneyTextMesh.text;
+        }
+
+        private void Start()
+        {
+            UpdateHUD(_playerStats);
         }
 
         private void UpdateHUD(PlayerStats stats)

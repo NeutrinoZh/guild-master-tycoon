@@ -4,8 +4,9 @@ using UnityEngine.UI;
 
 namespace GMT.GamePlay
 {
-    public class BuildingPurchasable : MonoBehaviour
+    public class TablePurchasable : MonoBehaviour
     {
+        [SerializeField] private int _workerId;
         private int _departmentId;
         private int _buildingId;
         private BuildingSO _buildingSO;
@@ -16,10 +17,6 @@ namespace GMT.GamePlay
 
         private PlayerStats _playerStats;
         private SavesManager _savesManager;
-
-        public int DepartmentId => _departmentId;
-        public int BuildingId => _buildingId;
-        public BuildingSO BuildingSO => _buildingSO;
 
         public void Init(int departmentId, int buildingId, BuildingSO buildingSO, PlayerStats playerStats, SavesManager savesManager)
         {
@@ -39,20 +36,31 @@ namespace GMT.GamePlay
 
         private void Start()
         {
-            _textMeshPrice.text = $"$ {_buildingSO.Price}";
+            _savesManager.OnBuildingPurchase += () =>
+            {
+                _canvas.gameObject.SetActive(
+                    !_savesManager.IsWorkerPurchased(_departmentId, _buildingId, _workerId) &&
+                    _savesManager.IsBuildingPurchased(_departmentId, _buildingId)
+                );
+            };
+
+            _textMeshPrice.text = $"$ {_buildingSO.TablePrice}";
             _buttonBuy.onClick.AddListener(BuyButtonHandler);
 
+            Debug.Log($"did: {_departmentId} bid: {_buildingId} wid: {_workerId}");
+
             _canvas.gameObject.SetActive(
-                !_savesManager.IsBuildingPurchased(_departmentId, _buildingId)
+                !_savesManager.IsWorkerPurchased(_departmentId, _buildingId, _workerId) &&
+                _savesManager.IsBuildingPurchased(_departmentId, _buildingId)
             );
         }
 
         private void BuyButtonHandler()
         {
-            if (!_playerStats.TrySubtract(_buildingSO.Price))
+            if (!_playerStats.TrySubtract(_buildingSO.TablePrice))
                 return;
 
-            _savesManager.PurchaseBuilding(_departmentId, _buildingId);
+            _savesManager.PurchaseWorker(_departmentId, _buildingId, _workerId);
             _canvas.gameObject.SetActive(false);
         }
     }

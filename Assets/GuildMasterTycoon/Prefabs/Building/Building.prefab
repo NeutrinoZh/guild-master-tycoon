@@ -592,7 +592,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.28399977, g: 0.7283019, b: 0.20749734, a: 1}
-    m_HighlightedColor: {r: 0.34511524, g: 0.8490566, b: 0.26112488, a: 1}
+    m_HighlightedColor: {r: 0.8509804, g: 0.3254902, b: 0.26112488, a: 1}
     m_PressedColor: {r: 0.22548348, g: 0.5924529, b: 0.16432182, a: 1}
     m_SelectedColor: {r: 0.28235295, g: 0.7294118, b: 0.20784314, a: 1}
     m_DisabledColor: {r: 0.28235295, g: 0.7294118, b: 0.20784314, a: 0.5019608}
@@ -1839,7 +1839,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3686675122648830683, guid: 8abd99137f1fd1648809b5b94445214b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580813235318453810, guid: 8abd99137f1fd1648809b5b94445214b, type: 3}
+      propertyPath: _workerId
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1905,7 +1909,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3686675122648830683, guid: 8abd99137f1fd1648809b5b94445214b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580813235318453810, guid: 8abd99137f1fd1648809b5b94445214b, type: 3}
+      propertyPath: _workerId
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1971,7 +1979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3686675122648830683, guid: 8abd99137f1fd1648809b5b94445214b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
