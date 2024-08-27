@@ -5,16 +5,23 @@ namespace MTK
 {
     public class NavGraphAgent : MonoBehaviour
     {
-        [SerializeField] private NavGraph _navGraph;
-        [SerializeField] int _currentPointId;
-        [SerializeField] int _targetPointId;
         [SerializeField] private float _speed;
 
-        private List<Vector2> _path = new();
+        private NavGraph _navGraph;
+        private int _currentPointId;
+        private int _targetPointId;
 
+        private List<Vector2> _path = new();
         private int _currentTarget = 0;
 
-        private void Awake()
+        public void Init(NavGraph navGraph, int currentPointId, int targetPointId)
+        {
+            _navGraph = navGraph;
+            _currentPointId = currentPointId;
+            _targetPointId = targetPointId;
+        }
+
+        private void Start()
         {
             _path = _navGraph.FindPath(_currentPointId, _targetPointId);
         }

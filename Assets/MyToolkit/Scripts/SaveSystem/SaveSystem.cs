@@ -28,7 +28,7 @@ namespace MTK.SaveSystem
             var serialized = _serializer.SerializeObject(value);
             // var encoded = Encoder.Encode(serialized, k_encryptionKey);
 
-            using var stream = File.OpenWrite(fullPath);
+            using var stream = File.Open(fullPath, FileMode.Create);
             using var writer = new StreamWriter(stream);
 
             writer.Write(serialized);

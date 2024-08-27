@@ -17,6 +17,14 @@ namespace GMT.GamePlay
                 ServiceContainer.Instance.Get<SavesManager>()
             );
 
+            building.GetComponent<BuildingNavPoints>().Init(
+                departmentId,
+                buildingId,
+                ServiceContainer.Instance.Get<SavesManager>(),
+                ServiceContainer.Instance.Get<NavControlPoints>(),
+                ServiceContainer.Instance.Get<NavGraphsManager>()
+            );
+
             foreach (TableInjector injector in building.GetComponentsInChildren<TableInjector>())
                 injector.Init(departmentId, buildingId, buildingSO);
 

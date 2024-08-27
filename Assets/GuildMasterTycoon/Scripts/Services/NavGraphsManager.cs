@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace GMT.GamePlay
 {
+    [DefaultExecutionOrder(-50)]
     public class NavGraphsManager : MonoBehaviour, IService
     {
         [SerializeField] private NavGraph _adventuresNavGraph;

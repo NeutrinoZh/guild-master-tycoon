@@ -16,6 +16,47 @@ namespace MTK
     {
         public List<Vector2> points = new();
         public List<Connection> connections = new();
+        public List<int> externalPoints = new();
+
+        public void Merge(NavGraph navGraph)
+        {
+            var localConnections = navGraph.connections.ToArray();
+            for (int i = 0; i < localConnections.Length; ++i)
+            {
+                var connection = localConnections[i];
+                connection.fromId += points.Count;
+                connection.toId += points.Count;
+
+                connections.Add(connection);
+            }
+
+            float minSqrDistance = float.MaxValue;
+            int pointI = -1, pointJ = -1;
+
+            foreach (var exPointGlobal in externalPoints)
+                foreach (var exPointLocal in navGraph.externalPoints)
+                {
+                    float sqrDistance = (points[exPointGlobal] - (navGraph.points[exPointLocal] + (Vector2)navGraph.transform.position)).sqrMagnitude;
+                    if (sqrDistance < minSqrDistance)
+                    {
+                        minSqrDistance = sqrDistance;
+                        pointI = exPointGlobal;
+                        pointJ = exPointLocal + points.Count;
+                    }
+                }
+
+            foreach (var externalPoint in navGraph.externalPoints)
+                externalPoints.Add(externalPoint + points.Count);
+
+            foreach (var point in navGraph.points)
+            {
+                var copyPoint = point + (Vector2)navGraph.transform.position;
+                points.Add(copyPoint);
+            }
+
+            if (pointI != -1 && pointJ != -1)
+                AddConnection(pointI, pointJ);
+        }
 
         public void AddConnection(int fromId, int toId)
         {

@@ -102,7 +102,7 @@ namespace MTK
 
             for (int i = 0; i < navGraph.points.Count; i++)
             {
-                Handles.Label(navGraph.points[i], $"Point  {i + 1}");
+                Handles.Label(navGraph.points[i], $"Point  {i}");
                 Handles.SphereHandleCap(0, navGraph.points[i], Quaternion.identity, 0.1f, EventType.Repaint);
             }
         }

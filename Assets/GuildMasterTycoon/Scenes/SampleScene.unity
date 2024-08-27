@@ -352,7 +352,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 26468882}
-  - component: {fileID: 26468883}
+  - component: {fileID: 26468884}
+  - component: {fileID: 26468885}
   m_Layer: 0
   m_Name: NavigationGraph
   m_TagString: Untagged
@@ -368,14 +369,30 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26468881}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.634593, y: -6.6156054, z: -3101.257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 129485960}
+  m_Father: {fileID: 33471845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &26468883
+--- !u!114 &26468884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26468881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b928da135fcbd94e9d9372b76eb5fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startPoints: 0000000001000000070000001d000000
+  _endPoints: 0000000001000000070000001d000000
+  _servePoints: 
+  _stayPoints: 23000000010000000200000003000000040000000500000022000000
+--- !u!114 &26468885
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -388,353 +405,238 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points:
-  - {x: 0, y: 6}
-  - {x: -1, y: 5}
-  - {x: 1, y: 5}
-  - {x: -1, y: 0}
-  - {x: 1, y: 0}
-  - {x: 0, y: 2}
-  - {x: -2.2465274, y: 3.8635964}
-  - {x: -3.605051, y: 3.856732}
-  - {x: -4.7867126, y: 5.741414}
-  - {x: -7.329531, y: 5.793766}
-  - {x: -8.642976, y: 3.9402122}
-  - {x: -5.74842, y: 3.0399508}
-  - {x: -8.414797, y: 2.1790204}
-  - {x: -5.949025, y: 2.170662}
-  - {x: -3.575197, y: 2.1205106}
-  - {x: -11.143975, y: 3.9544454}
-  - {x: -12.38761, y: 5.681636}
-  - {x: -15.154078, y: 5.789703}
-  - {x: -16.731827, y: 3.9309835}
-  - {x: -13.922134, y: 3.2069473}
-  - {x: -16.396826, y: 2.180329}
-  - {x: -13.954555, y: 2.0938768}
-  - {x: -11.52309, y: 2.1046834}
-  - {x: -19.481676, y: 3.9777498}
-  - {x: -20.435627, y: 5.6420755}
-  - {x: -23.520721, y: 5.713114}
-  - {x: -24.62689, y: 3.8965616}
-  - {x: -24.423923, y: 2.171344}
-  - {x: -22.049212, y: 2.1206026}
-  - {x: -19.44109, y: 2.1206026}
-  - {x: -21.754911, y: 3.3891447}
-  - {x: 0.0073895752, y: 8.704104}
-  - {x: -1.7559139, y: 10.076749}
-  - {x: 1.8023217, y: 10.168509}
-  - {x: 0.7827699, y: 11.391971}
-  - {x: -0.75675356, y: 11.402166}
-  - {x: 7.1117287, y: 10.201473}
-  - {x: 48.545403, y: 10.000993}
-  - {x: 7.0129027, y: 53.58069}
-  - {x: -8.074528, y: 53.524605}
-  - {x: -8.014554, y: 10.088685}
-  - {x: -57.84375, y: 10.184216}
+  - {x: -8.009947, y: 53.676266}
+  - {x: 7.0183682, y: 53.654057}
+  - {x: 6.994574, y: 11.501187}
+  - {x: 5.494213, y: 11.537633}
+  - {x: 8.488861, y: 11.543708}
+  - {x: 6.053052, y: 10.061569}
+  - {x: 8.185144, y: 10.037272}
+  - {x: 48.856945, y: 10.024694}
+  - {x: 1.5229418, y: 10.078939}
+  - {x: 0.72215986, y: 11.349039}
+  - {x: -0.9972136, y: 11.396933}
+  - {x: -2.1012366, y: 10.070643}
+  - {x: 0.0023159832, y: 10.034961}
+  - {x: -1.4895247, y: 8.587992}
+  - {x: 1.527809, y: 8.5655575}
+  - {x: -0.0088949, y: 7.8028173}
+  - {x: 0.009447008, y: 5.5891385}
+  - {x: -1.18, y: 4.48}
+  - {x: 1.15, y: 4.45}
+  - {x: 0.07856637, y: 2.3680809}
+  - {x: -1.1851728, y: 1.0602577}
+  - {x: 1.28, y: 1.0969944}
+  - {x: -1.1263942, y: -0.38716435}
+  - {x: 1.14, y: -0.42390108}
+  - {x: -6.3073907, y: 10.110206}
+  - {x: -6.987828, y: 11.421798}
+  - {x: -8.971085, y: 11.484489}
+  - {x: -9.993533, y: 10.096397}
+  - {x: -8.010127, y: 10.480017}
+  - {x: -57.815495, y: 10.086549}
   connections:
+  - fromId: 29
+    toId: 27
+  - fromId: 27
+    toId: 29
+  - fromId: 27
+    toId: 26
+  - fromId: 26
+    toId: 27
+  - fromId: 27
+    toId: 28
+  - fromId: 28
+    toId: 27
+  - fromId: 26
+    toId: 28
+  - fromId: 28
+    toId: 26
+  - fromId: 28
+    toId: 25
+  - fromId: 25
+    toId: 28
+  - fromId: 24
+    toId: 28
+  - fromId: 28
+    toId: 24
+  - fromId: 24
+    toId: 25
+  - fromId: 25
+    toId: 24
+  - fromId: 28
+    toId: 0
   - fromId: 0
-    toId: 1
-  - fromId: 0
+    toId: 28
+  - fromId: 3
     toId: 2
   - fromId: 2
-    toId: 5
-  - fromId: 1
-    toId: 5
-  - fromId: 5
     toId: 3
+  - fromId: 2
+    toId: 4
   - fromId: 4
     toId: 2
-  - fromId: 1
+  - fromId: 3
+    toId: 5
+  - fromId: 5
     toId: 3
-  - fromId: 5
+  - fromId: 6
     toId: 4
-  - fromId: 1
+  - fromId: 4
     toId: 6
+  - fromId: 2
+    toId: 5
+  - fromId: 5
+    toId: 2
+  - fromId: 2
+    toId: 6
+  - fromId: 6
+    toId: 2
+  - fromId: 6
+    toId: 5
   - fromId: 5
     toId: 6
+  - fromId: 5
+    toId: 8
+  - fromId: 8
+    toId: 5
+  - fromId: 2
+    toId: 1
+  - fromId: 1
+    toId: 2
   - fromId: 6
     toId: 7
   - fromId: 7
-    toId: 8
+    toId: 6
   - fromId: 8
     toId: 9
-  - fromId: 11
+  - fromId: 9
     toId: 8
-  - fromId: 11
+  - fromId: 10
     toId: 9
   - fromId: 9
     toId: 10
   - fromId: 10
+    toId: 11
+  - fromId: 11
+    toId: 10
+  - fromId: 24
+    toId: 11
+  - fromId: 11
+    toId: 24
+  - fromId: 12
+    toId: 8
+  - fromId: 8
     toId: 12
+  - fromId: 12
+    toId: 11
+  - fromId: 11
+    toId: 12
+  - fromId: 12
+    toId: 13
+  - fromId: 13
+    toId: 12
+  - fromId: 13
+    toId: 11
   - fromId: 11
     toId: 13
-  - fromId: 7
+  - fromId: 12
     toId: 14
-  - fromId: 11
+  - fromId: 14
+    toId: 12
+  - fromId: 14
+    toId: 8
+  - fromId: 8
     toId: 14
-  - fromId: 11
+  - fromId: 12
+    toId: 15
+  - fromId: 15
+    toId: 12
+  - fromId: 15
+    toId: 14
+  - fromId: 14
+    toId: 15
+  - fromId: 15
+    toId: 13
+  - fromId: 13
+    toId: 15
+  - fromId: 12
+    toId: 9
+  - fromId: 9
     toId: 12
   - fromId: 10
-    toId: 15
+    toId: 12
+  - fromId: 12
+    toId: 10
   - fromId: 15
     toId: 16
   - fromId: 16
+    toId: 15
+  - fromId: 16
     toId: 17
   - fromId: 17
-    toId: 18
+    toId: 16
   - fromId: 16
+    toId: 18
+  - fromId: 18
+    toId: 16
+  - fromId: 18
     toId: 19
+  - fromId: 19
+    toId: 18
   - fromId: 17
+    toId: 19
+  - fromId: 19
+    toId: 17
+  - fromId: 17
+    toId: 20
+  - fromId: 20
+    toId: 17
+  - fromId: 18
+    toId: 21
+  - fromId: 21
+    toId: 18
+  - fromId: 19
+    toId: 20
+  - fromId: 20
+    toId: 19
+  - fromId: 19
+    toId: 19
+  - fromId: 19
+    toId: 19
+  - fromId: 21
     toId: 19
   - fromId: 19
     toId: 21
-  - fromId: 19
-    toId: 22
-  - fromId: 19
-    toId: 20
-  - fromId: 15
-    toId: 22
-  - fromId: 18
-    toId: 20
-  - fromId: 18
-    toId: 23
-  - fromId: 23
-    toId: 29
-  - fromId: 30
-    toId: 29
-  - fromId: 30
-    toId: 28
-  - fromId: 27
-    toId: 30
-  - fromId: 30
-    toId: 24
-  - fromId: 24
-    toId: 23
-  - fromId: 24
-    toId: 25
-  - fromId: 25
-    toId: 30
-  - fromId: 25
-    toId: 26
-  - fromId: 26
-    toId: 27
-  - fromId: 15
-    toId: 15
-  - fromId: 19
-    toId: 15
-  - fromId: 18
-    toId: 19
-  - fromId: 7
-    toId: 11
-  - fromId: 10
-    toId: 11
-  - fromId: 7
-    toId: 10
-  - fromId: 15
-    toId: 18
-  - fromId: 23
-    toId: 26
-  - fromId: 30
-    toId: 23
-  - fromId: 30
-    toId: 26
-  - fromId: 0
-    toId: 31
-  - fromId: 33
-    toId: 31
-  - fromId: 32
-    toId: 31
-  - fromId: 35
-    toId: 34
-  - fromId: 34
-    toId: 33
-  - fromId: 35
-    toId: 32
-  - fromId: 31
-    toId: 34
-  - fromId: 31
-    toId: 35
-  - fromId: 33
-    toId: 36
-  - fromId: 36
-    toId: 38
-  - fromId: 36
-    toId: 37
-  - fromId: 32
-    toId: 40
-  - fromId: 40
-    toId: 39
-  - fromId: 40
-    toId: 41
-  - fromId: 1
-    toId: 0
-  - fromId: 2
-    toId: 0
-  - fromId: 2
-    toId: 4
-  - fromId: 3
-    toId: 5
-  - fromId: 3
-    toId: 1
-  - fromId: 4
-    toId: 5
-  - fromId: 4
-    toId: 2
-  - fromId: 5
-    toId: 2
-  - fromId: 5
-    toId: 1
-  - fromId: 5
-    toId: 3
-  - fromId: 5
-    toId: 4
-  - fromId: 6
-    toId: 1
-  - fromId: 6
-    toId: 5
-  - fromId: 7
-    toId: 6
-  - fromId: 8
-    toId: 7
-  - fromId: 8
-    toId: 11
-  - fromId: 9
-    toId: 8
-  - fromId: 9
-    toId: 11
-  - fromId: 10
-    toId: 9
-  - fromId: 10
-    toId: 7
-  - fromId: 11
-    toId: 7
-  - fromId: 11
-    toId: 10
-  - fromId: 11
-    toId: 8
-  - fromId: 11
-    toId: 9
-  - fromId: 12
-    toId: 10
-  - fromId: 12
-    toId: 11
-  - fromId: 13
-    toId: 11
-  - fromId: 14
-    toId: 7
-  - fromId: 14
-    toId: 11
-  - fromId: 15
-    toId: 10
-  - fromId: 15
-    toId: 15
-  - fromId: 15
-    toId: 19
-  - fromId: 16
-    toId: 15
-  - fromId: 17
-    toId: 16
-  - fromId: 18
-    toId: 17
-  - fromId: 18
-    toId: 15
-  - fromId: 19
-    toId: 16
-  - fromId: 19
-    toId: 17
-  - fromId: 19
-    toId: 18
-  - fromId: 19
-    toId: 15
   - fromId: 20
-    toId: 19
-  - fromId: 20
-    toId: 18
+    toId: 22
+  - fromId: 22
+    toId: 20
+  - fromId: 22
+    toId: 21
   - fromId: 21
+    toId: 22
+  - fromId: 23
+    toId: 20
+  - fromId: 20
+    toId: 23
+  - fromId: 22
+    toId: 23
+  - fromId: 23
+    toId: 22
+  - fromId: 23
+    toId: 21
+  - fromId: 21
+    toId: 23
+  - fromId: 23
     toId: 19
+  - fromId: 19
+    toId: 23
   - fromId: 22
     toId: 19
-  - fromId: 22
-    toId: 15
-  - fromId: 23
-    toId: 18
-  - fromId: 23
-    toId: 24
-  - fromId: 23
-    toId: 30
-  - fromId: 24
-    toId: 30
-  - fromId: 24
-    toId: 23
-  - fromId: 25
-    toId: 24
-  - fromId: 26
-    toId: 25
-  - fromId: 26
-    toId: 23
-  - fromId: 26
-    toId: 30
-  - fromId: 27
-    toId: 26
-  - fromId: 28
-    toId: 30
-  - fromId: 29
-    toId: 23
-  - fromId: 29
-    toId: 30
-  - fromId: 30
-    toId: 27
-  - fromId: 30
-    toId: 25
-  - fromId: 30
-    toId: 23
-  - fromId: 30
-    toId: 24
-  - fromId: 30
-    toId: 26
-  - fromId: 30
-    toId: 28
-  - fromId: 30
-    toId: 29
-  - fromId: 31
-    toId: 0
-  - fromId: 31
-    toId: 33
-  - fromId: 31
-    toId: 32
-  - fromId: 32
-    toId: 35
-  - fromId: 32
-    toId: 31
-  - fromId: 33
-    toId: 34
-  - fromId: 33
-    toId: 31
-  - fromId: 34
-    toId: 35
-  - fromId: 34
-    toId: 31
-  - fromId: 34
-    toId: 33
-  - fromId: 35
-    toId: 31
-  - fromId: 35
-    toId: 32
-  - fromId: 35
-    toId: 34
-  - fromId: 36
-    toId: 33
-  - fromId: 37
-    toId: 36
-  - fromId: 38
-    toId: 36
-  - fromId: 39
-    toId: 40
-  - fromId: 40
-    toId: 32
-  - fromId: 40
-    toId: 39
-  - fromId: 41
-    toId: 40
+  - fromId: 19
+    toId: 22
+  externalPoints: 1100000012000000
 --- !u!1 &33471844
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,6 +668,7 @@ Transform:
   m_Children:
   - {fileID: 1117352208}
   - {fileID: 870905818}
+  - {fileID: 26468882}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &129485959
@@ -777,6 +680,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 129485960}
+  - component: {fileID: 129485961}
+  - component: {fileID: 129485962}
   m_Layer: 0
   m_Name: Adventurers
   m_TagString: Untagged
@@ -796,10 +701,36 @@ Transform:
   m_LocalPosition: {x: -1.796354, y: 4.1722336, z: -0.07081912}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 26468882}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &129485961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129485959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb18a690c32113042825a9ee554428bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adventurerPrefab: {fileID: 8422079920079194827, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
+  _countOfAdventurers: 3
+  _spawnInterval: 3
+--- !u!114 &129485962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129485959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b8503f77de1c14baa0a9bb35adf618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &207282328
 GameObject:
   m_ObjectHideFlags: 0
@@ -125111,7 +125042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76993f0452252d541bbdd1926a1d0f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _adventuresNavGraph: {fileID: 26468883}
+  _adventuresNavGraph: {fileID: 26468885}
 --- !u!1 &1138596131
 GameObject:
   m_ObjectHideFlags: 0
@@ -125643,87 +125574,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _departmentData: {fileID: 11400000, guid: 9bf78ed9981a2514089d12306e4fcfad, type: 2}
---- !u!1001 &1590927105
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5527998997487206054, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
-      propertyPath: m_Name
-      value: Adventurer
-      objectReference: {fileID: 0}
-    - target: {fileID: 8422079920079194827, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -7.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8422079920079194827, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 53.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8422079920079194827, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.07081912
-      objectReference: {fileID: 0}
-    - target: {fileID: 8422079920079194827, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8422079920079194827, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8422079920079194827, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8422079920079194827, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8422079920079194827, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8422079920079194827, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8422079920079194827, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5527998997487206054, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1590927107}
-  m_SourcePrefab: {fileID: 100100000, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
---- !u!1 &1590927106 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5527998997487206054, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
-  m_PrefabInstance: {fileID: 1590927105}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1590927107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1590927106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48d3570d2c5c30942b1a02e73161fcb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _navGraph: {fileID: 26468883}
-  _currentPointId: 39
-  _targetPointId: 29
-  _speed: 1
 --- !u!1 &2107499632
 GameObject:
   m_ObjectHideFlags: 0
@@ -125901,4 +125751,3 @@ SceneRoots:
   - {fileID: 241668367}
   - {fileID: 129485960}
   - {fileID: 33471845}
-  - {fileID: 1590927105}

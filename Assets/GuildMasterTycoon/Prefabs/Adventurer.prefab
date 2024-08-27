@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8422079920079194827}
   - component: {fileID: 4984288838606668743}
   - component: {fileID: 1039479433597548829}
+  - component: {fileID: -408620569499952041}
   m_Layer: 0
   m_Name: Adventurer
   m_TagString: Untagged
@@ -106,3 +107,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-408620569499952041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5527998997487206054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48d3570d2c5c30942b1a02e73161fcb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _navGraph: {fileID: 0}
+  _currentPointId: 0
+  _targetPointId: 32
+  _speed: 1

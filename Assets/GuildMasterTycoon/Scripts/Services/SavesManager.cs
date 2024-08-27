@@ -12,6 +12,7 @@ namespace GMT.GamePlay
     public class SavesManager : IService
     {
         public event Action OnBuildingPurchase;
+        public event Action<int, int, int> OnWorkerPurchase;
 
         public int Money
         {
@@ -38,6 +39,8 @@ namespace GMT.GamePlay
 
             _gameData.departments[departmentId].buildings[buildingId].workers.Add(workerId);
             _isDirty = true;
+
+            OnWorkerPurchase?.Invoke(departmentId, buildingId, workerId);
         }
 
         public void CompleteTutorial()
