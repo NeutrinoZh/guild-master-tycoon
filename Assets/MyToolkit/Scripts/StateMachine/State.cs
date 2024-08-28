@@ -2,7 +2,7 @@ namespace MTK.StateMachine
 {
     public abstract class State
     {
-        private StateMachine _stateMachine;
+        protected StateMachine _stateMachine;
 
         public void Init(StateMachine stateMachine)
         {

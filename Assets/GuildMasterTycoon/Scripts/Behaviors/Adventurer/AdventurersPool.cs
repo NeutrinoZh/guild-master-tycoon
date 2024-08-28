@@ -94,11 +94,6 @@ namespace GMT
                     _navControlPoints.TakeRandomStayPoint()
                 );
 
-            adventurer.GetComponent<Adventurer>().Init(
-                ServiceContainer.Instance.Get<PlayerStats>(),
-                ServiceContainer.Instance.Get<NavControlPoints>()
-            );
-
             _adventurers.Add(adventurer);
         }
     }

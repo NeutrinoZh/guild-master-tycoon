@@ -1,78 +1,41 @@
+using System.Collections;
+
 using UnityEngine;
 
 using MTK;
 
 using GMT.GamePlay;
-using System.Collections;
 
-namespace GMT
+namespace GMT.GamePlay
 {
     public class Adventurer : MonoBehaviour
     {
         [SerializeField] int _revenue;
         [SerializeField] int _servingTime;
 
-        private NavGraphAgent _navAgent;
-        private NavControlPoints _navControlPoints;
-        private PlayerStats _playerStats;
         private Coroutine _routine;
+        private AdventurerSM _adventurerSM;
 
-        public void Init(PlayerStats playerStats, NavControlPoints navControlPoints)
+        public int ServingTime => _servingTime;
+        public int Revenue => _revenue;
+
+        public void Release()
         {
-            _playerStats = playerStats;
-            _navControlPoints = navControlPoints;
+            var pool = GetComponentInParent<AdventurersPool>();
+            pool.ReturnAdventurer(transform);
         }
 
-        private void Awake()
-        {
-            _navAgent = GetComponent<NavGraphAgent>();
-            _navAgent.OnPathFinished += OnPathFinishedHandler;
-        }
-
-        private void OnPathFinishedHandler()
+        public void StartSingleRoutine(IEnumerator routine) 
         {
             if (_routine != null)
                 StopCoroutine(_routine);
 
-            if (_navControlPoints.IsItEndPoint(_navAgent.TargetPoint))
-            {
-                var pool = GetComponentInParent<AdventurersPool>();
-                pool.ReturnAdventurer(transform);
-
-                return;
-            }
-
-            if (_navControlPoints.IsItServingPoint(_navAgent.TargetPoint))
-            {
-                _routine = StartCoroutine(ServingRoutine());
-            }
-
-            if (_navControlPoints.IsItStayingPoint(_navAgent.TargetPoint))
-            {
-                _routine = StartCoroutine(StayingRoutine());
-            }
+            _routine = StartCoroutine(routine);
         }
 
-        private IEnumerator StayingRoutine()
+        private void Awake()
         {
-            while (!_navControlPoints.IsExistAvailableServingPoint())
-                yield return new WaitForSeconds(1);
-
-            _navControlPoints.ReturnStayPoint(_navAgent.TargetPoint);
-            _navAgent.MoveTo(
-                _navControlPoints.TakeRandomServePoint()
-            );
-
-            yield break;
-        }
-
-        private IEnumerator ServingRoutine()
-        {
-            yield return new WaitForSeconds(_servingTime);
-            _playerStats.AddMoney(_revenue);
-
-            _navControlPoints.ReturnServePoint(_navAgent.TargetPoint);
-            _navAgent.MoveTo(_navControlPoints.GetRandomEndPoint());
-        }
+            _adventurerSM = new(transform);
+          }
     }
 }
