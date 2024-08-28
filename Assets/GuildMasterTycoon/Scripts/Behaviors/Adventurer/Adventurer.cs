@@ -1,10 +1,7 @@
+using MTK.Tween;
 using System.Collections;
 
 using UnityEngine;
-
-using MTK;
-
-using GMT.GamePlay;
 
 namespace GMT.GamePlay
 {
@@ -25,7 +22,7 @@ namespace GMT.GamePlay
             pool.ReturnAdventurer(transform);
         }
 
-        public void StartSingleRoutine(IEnumerator routine) 
+        public void StartSingleRoutine(IEnumerator routine)
         {
             if (_routine != null)
                 StopCoroutine(_routine);
@@ -36,6 +33,11 @@ namespace GMT.GamePlay
         private void Awake()
         {
             _adventurerSM = new(transform);
-          }
+        }
+
+        private void Update()
+        {
+            _adventurerSM.Update();
+        }
     }
 }
