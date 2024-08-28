@@ -62,6 +62,21 @@ namespace GMT.GamePlay
             return point;
         }
 
+        public bool IsItServingPoint(int pointId)
+        {
+            return _servePoints.Contains(pointId);
+        }
+
+        public bool IsItStayingPoint(int pointId)
+        {
+            return _stayPoints.Contains(pointId);
+        }
+
+        public bool IsItEndPoint(int pointId)
+        {
+            return _endPoints.Contains(pointId);
+        }
+
         public void ReturnServePoint(int point)
         {
             if (!_servePoints.Contains(point))
@@ -90,7 +105,12 @@ namespace GMT.GamePlay
             _stayPointsAvailable.Add(point);
         }
 
-        public bool IsExistAvailableServePoint()
+        public bool IsExistAvailableStayingPoint()
+        {
+            return _stayPointsAvailable.Count > 0;
+        }
+
+        public bool IsExistAvailableServingPoint()
         {
             return _servePointsAvailable.Count > 0;
         }

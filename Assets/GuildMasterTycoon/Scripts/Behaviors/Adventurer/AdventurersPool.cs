@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using System.Collections;
 
-using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine;
 
 using MTK.Services;
-using System.Collections;
-using GMT.GamePlay;
 using MTK;
+
+using GMT.GamePlay;
 
 namespace GMT
 {
@@ -25,6 +26,12 @@ namespace GMT
         {
             _navControlPoints = navControlPoints;
             _navGraph = navGraph;
+        }
+
+        public void ReturnAdventurer(Transform adventurer)
+        {
+            _adventurers.Remove(adventurer);
+            _adventurersPool.Release(adventurer);
         }
 
         private void Awake()
@@ -50,7 +57,7 @@ namespace GMT
         {
             while (true)
             {
-                while (!_navControlPoints.IsExistAvailableServePoint())
+                while (!_navControlPoints.IsExistAvailableServingPoint() && !_navControlPoints.IsExistAvailableStayingPoint())
                 {
                     yield return new WaitForSeconds(_spawnInterval);
                     continue;
@@ -70,10 +77,24 @@ namespace GMT
 
             adventurer.transform.position = point;
 
-            adventurer.GetComponent<NavGraphAgent>().Init(
+            var navAgent = adventurer.GetComponent<NavGraphAgent>();
+            navAgent.Init(
                 _navGraph,
-                spawnPointId,
-                _navControlPoints.TakeRandomServePoint()
+                spawnPointId
+            );
+
+            if (_navControlPoints.IsExistAvailableServingPoint())
+                navAgent.MoveTo(
+                    _navControlPoints.TakeRandomServePoint()
+                );
+            else
+                navAgent.MoveTo(
+                    _navControlPoints.TakeRandomStayPoint()
+                );
+
+            adventurer.GetComponent<Adventurer>().Init(
+                ServiceContainer.Instance.Get<PlayerStats>(),
+                ServiceContainer.Instance.Get<NavControlPoints>()
             );
 
             _adventurers.Add(adventurer);

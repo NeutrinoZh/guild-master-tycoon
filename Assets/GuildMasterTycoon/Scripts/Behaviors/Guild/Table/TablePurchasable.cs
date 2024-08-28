@@ -47,8 +47,6 @@ namespace GMT.GamePlay
             _textMeshPrice.text = $"$ {_buildingSO.TablePrice}";
             _buttonBuy.onClick.AddListener(BuyButtonHandler);
 
-            Debug.Log($"did: {_departmentId} bid: {_buildingId} wid: {_workerId}");
-
             _canvas.gameObject.SetActive(
                 !_savesManager.IsWorkerPurchased(_departmentId, _buildingId, _workerId) &&
                 _savesManager.IsBuildingPurchased(_departmentId, _buildingId)

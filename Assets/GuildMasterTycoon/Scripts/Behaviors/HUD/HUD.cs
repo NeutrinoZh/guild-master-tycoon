@@ -1,6 +1,8 @@
-using GMT.GamePlay;
-using TMPro;
 using UnityEngine;
+
+using TMPro;
+
+using GMT.GamePlay;
 
 namespace GMT.UI
 {

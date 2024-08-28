@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4984288838606668743}
   - component: {fileID: 1039479433597548829}
   - component: {fileID: -408620569499952041}
+  - component: {fileID: 7533315731417261865}
   m_Layer: 0
   m_Name: Adventurer
   m_TagString: Untagged
@@ -119,7 +120,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d3570d2c5c30942b1a02e73161fcb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _navGraph: {fileID: 0}
-  _currentPointId: 0
-  _targetPointId: 32
-  _speed: 1
+  _speed: 2
+--- !u!114 &7533315731417261865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5527998997487206054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1621645d765cd4ba6a77c0b99c80ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _revenue: 20
+  _servingTime: 1

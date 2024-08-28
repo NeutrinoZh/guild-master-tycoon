@@ -1,7 +1,9 @@
-using GMT.GamePlay;
 using System.Collections;
-using UnityEngine;
+
 using UnityEngine.UI;
+using UnityEngine;
+
+using GMT.GamePlay;
 
 namespace GMT.UI
 {

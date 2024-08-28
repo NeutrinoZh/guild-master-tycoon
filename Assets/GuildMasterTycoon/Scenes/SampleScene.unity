@@ -391,7 +391,7 @@ MonoBehaviour:
   _startPoints: 0000000001000000070000001d000000
   _endPoints: 0000000001000000070000001d000000
   _servePoints: 
-  _stayPoints: 23000000010000000200000003000000040000000500000022000000
+  _stayPoints: 1a000000190000000a00000009000000030000000400000014000000150000001600000017000000
 --- !u!114 &26468885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,7 +717,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _adventurerPrefab: {fileID: 8422079920079194827, guid: 411f1cf84219bb94a8e3b4cadee079cf, type: 3}
-  _countOfAdventurers: 3
   _spawnInterval: 3
 --- !u!114 &129485962
 MonoBehaviour:
