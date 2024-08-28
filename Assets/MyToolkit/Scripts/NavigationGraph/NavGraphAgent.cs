@@ -20,16 +20,19 @@ namespace MTK
 
         private bool _isPathFinished = false;
 
-        public int CurrentPoint => _currentPointId;
+        public int TargetPoint => _targetPointId;
 
         public void Init(NavGraph navGraph, int currentPointId)
         {
             _navGraph = navGraph;
+
             _currentPointId = currentPointId;
+            _targetPointId = currentPointId;
         }
 
         public void MoveTo(int targetPointId)
         {
+            _currentPointId = _targetPointId;
             _targetPointId = targetPointId;
             _isPathFinished = false;
             _currentTarget = 0;
@@ -43,8 +46,9 @@ namespace MTK
                 if (!_isPathFinished)
                 {
                     _currentPointId = _targetPointId;
-                    OnPathFinished?.Invoke();
                     _isPathFinished = true;
+
+                    OnPathFinished?.Invoke();
                 }
 
                 return;

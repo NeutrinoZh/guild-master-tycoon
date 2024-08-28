@@ -134,4 +134,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _revenue: 20
-  _servingTime: 1
+  _servingTime: 2
+  _state: 0

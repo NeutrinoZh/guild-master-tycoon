@@ -64,6 +64,15 @@ namespace GMT.GamePlay
             return _gameData.isTutorialCompleted;
         }
 
+        public int CountOfPurchasedBuldings()
+        {
+            int count = 0;
+            foreach (var department in _gameData.departments)
+                foreach (var building in department.buildings)
+                    count += building.purchased ? 1 : 0;
+            return count;
+        }
+
         public SavesManager()
         {
             _saveSystem = new SaveSystem(Application.persistentDataPath, new JSONSerializer());
@@ -113,7 +122,7 @@ namespace GMT.GamePlay
         private const string k_gameDataKey = "gameData";
         private static readonly GameData k_playerScoresDefaultData = new()
         {
-            money = 1500,
+            money = 100,
             isTutorialCompleted = false,
             departments = new()
             {
@@ -158,7 +167,81 @@ namespace GMT.GamePlay
                             workers=new(){}
                         }
                     }
-                }
+                },
+                new()
+                {
+                    buildings=new()
+                    {
+                        new()
+                        {
+                            purchased = false,
+                            workers=new(){}
+                        },
+                        new()
+                        {
+                            purchased = false,
+                            workers=new(){}
+                        },
+                    }
+                },
+                new()
+                {
+                    buildings=new()
+                    {
+                        new()
+                        {
+                            purchased = false,
+                            workers=new(){}
+                        },
+                        new()
+                        {
+                            purchased = false,
+                            workers=new(){}
+                        },
+                    }
+                },
+                new()
+                {
+                    buildings=new()
+                    {
+                        new()
+                        {
+                            purchased = false,
+                            workers=new(){}
+                        },
+                        new()
+                        {
+                            purchased = false,
+                            workers=new(){}
+                        },
+                        new()
+                        {
+                            purchased = false,
+                            workers=new(){}
+                        }
+                    }
+                },
+                new()
+                {
+                    buildings=new()
+                    {
+                        new()
+                        {
+                            purchased = false,
+                            workers=new(){}
+                        },
+                        new()
+                        {
+                            purchased = false,
+                            workers=new(){}
+                        },
+                        new()
+                        {
+                            purchased = false,
+                            workers=new(){}
+                        }
+                    }
+                },
             }
         };
 

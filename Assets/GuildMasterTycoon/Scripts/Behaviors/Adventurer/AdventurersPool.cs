@@ -19,12 +19,14 @@ namespace GMT
         private IObjectPool<Transform> _adventurersPool;
         private List<Transform> _adventurers;
 
+        private SavesManager _savesManager;
         private NavControlPoints _navControlPoints;
         private NavGraph _navGraph;
 
-        public void Init(NavControlPoints navControlPoints, NavGraph navGraph)
+        public void Init(NavControlPoints navControlPoints, NavGraph navGraph, SavesManager savesManager)
         {
             _navControlPoints = navControlPoints;
+            _savesManager = savesManager;
             _navGraph = navGraph;
         }
 
@@ -59,11 +61,11 @@ namespace GMT
             {
                 while (!_navControlPoints.IsExistAvailableServingPoint() && !_navControlPoints.IsExistAvailableStayingPoint())
                 {
-                    yield return new WaitForSeconds(_spawnInterval);
+                    yield return null;
                     continue;
                 }
 
-                yield return new WaitForSeconds(_spawnInterval);
+                yield return new WaitForSeconds(_spawnInterval / _savesManager.CountOfPurchasedBuldings());
                 SpawnAdventurer();
             }
         }

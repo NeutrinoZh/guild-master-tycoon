@@ -10,7 +10,8 @@ namespace GMT.GamePlay
         {
             GetComponent<AdventurersPool>().Init(
                 ServiceContainer.Instance.Get<NavControlPoints>(),
-                ServiceContainer.Instance.Get<NavGraphsManager>().AdventuresNavGraph()
+                ServiceContainer.Instance.Get<NavGraphsManager>().AdventuresNavGraph(),
+                ServiceContainer.Instance.Get<SavesManager>()
             );
 
             Destroy(this);

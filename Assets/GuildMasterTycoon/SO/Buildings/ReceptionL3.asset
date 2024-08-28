@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30344da75a56b3840ac76279239975b4, type: 3}
-  m_Name: Reception
+  m_Name: ReceptionL3
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 8151233683381824461, guid: 21c507caa268cf6428aca14a4493e1b5, type: 3}
   <Width>k__BackingField: 8
-  <Price>k__BackingField: 1000
-  <TablePrice>k__BackingField: 150
+  <Price>k__BackingField: 4000
+  <TablePrice>k__BackingField: 500

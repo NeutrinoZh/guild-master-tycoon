@@ -15,8 +15,7 @@ namespace GMT
         private NavGraphAgent _navAgent;
         private NavControlPoints _navControlPoints;
         private PlayerStats _playerStats;
-
-        [SerializeField] private int _state = 0;
+        private Coroutine _routine;
 
         public void Init(PlayerStats playerStats, NavControlPoints navControlPoints)
         {
@@ -32,26 +31,25 @@ namespace GMT
 
         private void OnPathFinishedHandler()
         {
-            if (_navControlPoints.IsItEndPoint(_navAgent.CurrentPoint))
-            {
-                _state = 0;
+            if (_routine != null)
+                StopCoroutine(_routine);
 
+            if (_navControlPoints.IsItEndPoint(_navAgent.TargetPoint))
+            {
                 var pool = GetComponentInParent<AdventurersPool>();
                 pool.ReturnAdventurer(transform);
 
                 return;
             }
 
-            if (_navControlPoints.IsItServingPoint(_navAgent.CurrentPoint))
+            if (_navControlPoints.IsItServingPoint(_navAgent.TargetPoint))
             {
-                _state = 1;
-                StartCoroutine(ServingRoutine());
+                _routine = StartCoroutine(ServingRoutine());
             }
 
-            if (_navControlPoints.IsItStayingPoint(_navAgent.CurrentPoint))
+            if (_navControlPoints.IsItStayingPoint(_navAgent.TargetPoint))
             {
-                _state = 2;
-                StartCoroutine(StayingRoutine());
+                _routine = StartCoroutine(StayingRoutine());
             }
         }
 
@@ -60,12 +58,10 @@ namespace GMT
             while (!_navControlPoints.IsExistAvailableServingPoint())
                 yield return new WaitForSeconds(1);
 
-            _navControlPoints.ReturnStayPoint(_navAgent.CurrentPoint);
+            _navControlPoints.ReturnStayPoint(_navAgent.TargetPoint);
             _navAgent.MoveTo(
                 _navControlPoints.TakeRandomServePoint()
             );
-
-            _state = 3;
 
             yield break;
         }
@@ -75,10 +71,8 @@ namespace GMT
             yield return new WaitForSeconds(_servingTime);
             _playerStats.AddMoney(_revenue);
 
-            _navControlPoints.ReturnServePoint(_navAgent.CurrentPoint);
+            _navControlPoints.ReturnServePoint(_navAgent.TargetPoint);
             _navAgent.MoveTo(_navControlPoints.GetRandomEndPoint());
-
-            _state = 4;
         }
     }
 }

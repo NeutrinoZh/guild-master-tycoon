@@ -1586,7 +1586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stayPoints: 060000000700000008000000
-  _servePoints: 020000000300000004000000
+  _servePoints: 040000000300000002000000
 --- !u!1 &8262851673600488371
 GameObject:
   m_ObjectHideFlags: 0

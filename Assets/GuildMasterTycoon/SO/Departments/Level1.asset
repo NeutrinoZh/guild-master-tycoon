@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 352951c1d6f5c0b48a5307b7cfb2103e, type: 3}
-  m_Name: Test 1
+  m_Name: Level1
   m_EditorClassIdentifier: 
   <Building>k__BackingField: {fileID: 11400000, guid: c3863a3b595711e439264106166e3b50, type: 2}
   <DirectionOfExpansion>k__BackingField: 1
