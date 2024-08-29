@@ -29,6 +29,10 @@ namespace GMT.GamePlay
             foreach (TableInjector injector in building.GetComponentsInChildren<TableInjector>())
                 injector.Init(departmentId, buildingId, buildingSO);
 
+            building.GetComponent<LocalTableManager>().Init(
+                ServiceContainer.Instance.Get<TableManager>()
+            );
+
             return building.transform;
         }
     }

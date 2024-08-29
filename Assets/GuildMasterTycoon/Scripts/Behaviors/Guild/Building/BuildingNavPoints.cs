@@ -4,11 +4,14 @@ using UnityEngine;
 
 using MTK.Services;
 using MTK;
+using System;
 
 namespace GMT.GamePlay
 {
-    public class BuildingNavPoints : MonoBehaviour, IService
+    public class BuildingNavPoints : MonoBehaviour
     {
+        public event Action<int> OnBeforeMerge;
+
         [SerializeField] private List<int> _stayPoints;
         [SerializeField] private List<int> _servePoints;
 
@@ -70,6 +73,8 @@ namespace GMT.GamePlay
                 return;
 
             var globalGraph = _navGraphsManager.AdventuresNavGraph();
+
+            OnBeforeMerge?.Invoke(globalGraph.points.Count);
 
             for (int i = 0; i < _stayPoints.Count; ++i)
                 _stayPoints[i] += globalGraph.points.Count;

@@ -14,14 +14,20 @@ namespace GMT.GamePlay
 
         private void Awake()
         {
-            _progressBar = transform.Find("ProgressBar");
-            _filling = _progressBar.Find("Filling").GetComponent<Image>();
+            _progressBar = transform.Find("Unlocked").Find("Canvas").Find("ProgressBar");
+            _filling = _progressBar.Find("Fill").GetComponent<Image>();
+        }
+
+        private void Start()
+        {
+            _progressBar.gameObject.SetActive(false);
         }
 
         public void ServeAnimate(float duration)
         {
             _progressBar.gameObject.SetActive(true);
 
+            _filling.fillAmount = 0;
             MyTween.To(
                 () => _filling.fillAmount,
                 value => _filling.fillAmount = value,

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2151845407134260269}
   - component: {fileID: 4580813235318453810}
   - component: {fileID: 5235080316309783152}
+  - component: {fileID: 5143763657755628224}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -33,7 +34,6 @@ Transform:
   m_Children:
   - {fileID: 7173777577161758051}
   - {fileID: 7901176146147790859}
-  - {fileID: 2770122384557931243}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4580813235318453810
@@ -59,6 +59,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edee7f06672e8904cb8c4906e66d0298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5143763657755628224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526277713183233725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562661670ed3c7a48814a1efb14390ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &623803687382815883
@@ -604,7 +616,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -806,6 +818,7 @@ Transform:
   m_Children:
   - {fileID: 3356505505982305585}
   - {fileID: 500420730213689758}
+  - {fileID: 2770122384557931243}
   m_Father: {fileID: 2151845407134260269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6284248441840676356
@@ -915,7 +928,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 979428456378625883}
-  m_Father: {fileID: 2151845407134260269}
+  m_Father: {fileID: 7901176146147790859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

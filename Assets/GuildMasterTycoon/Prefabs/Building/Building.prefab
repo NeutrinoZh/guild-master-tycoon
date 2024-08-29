@@ -1437,6 +1437,7 @@ GameObject:
   - component: {fileID: 1634274927356139367}
   - component: {fileID: 8009815769219480572}
   - component: {fileID: 8668599174923898610}
+  - component: {fileID: 4591375154463633104}
   m_Layer: 0
   m_Name: Building
   m_TagString: Untagged
@@ -1587,6 +1588,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stayPoints: 060000000700000008000000
   _servePoints: 040000000300000002000000
+--- !u!114 &4591375154463633104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8151233683381824461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ea27222fd4cc247954df4a59effd73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointTablePairs:
+  - point: 2
+    table: {fileID: 4722823678494571173}
+  - point: 3
+    table: {fileID: 3971167939566255134}
+  - point: 4
+    table: {fileID: 7728714235146053230}
 --- !u!1 &8262851673600488371
 GameObject:
   m_ObjectHideFlags: 0

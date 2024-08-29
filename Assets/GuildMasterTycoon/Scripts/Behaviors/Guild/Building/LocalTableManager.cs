@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 namespace GMT.GamePlay
@@ -11,22 +12,28 @@ namespace GMT.GamePlay
         public Transform table;
     }
 
+    [DefaultExecutionOrder(-1)]
     public class LocalTableManager : MonoBehaviour
     {
         [SerializeField] private List<PointTablePair> pointTablePairs = new();
-        private TableManager _tableManager;
-        private SavesManager _savesManager;
 
-        public void Init(TableManager tableManager, SavesManager savesManager)
+        private TableManager _tableManager;
+        private BuildingNavPoints _buildingNav;
+
+        public void Init(TableManager tableManager)
         {
             _tableManager = tableManager;
-            _savesManager = savesManager;
+            _buildingNav = GetComponent<BuildingNavPoints>();
         }
 
         private void Start()
         {
-
+            _buildingNav.OnBeforeMerge += MergePointsToGlobal;
         }
 
+        private void MergePointsToGlobal(int offset)
+        {
+            _tableManager.MergeTable(pointTablePairs, offset);
+        }
     }
 }

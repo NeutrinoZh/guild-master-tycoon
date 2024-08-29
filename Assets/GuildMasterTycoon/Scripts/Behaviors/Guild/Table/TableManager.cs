@@ -6,14 +6,20 @@ using MTK.Services;
 
 namespace GMT.GamePlay
 {
-    [DefaultExecutionOrder(-50)]
-    public class TableManager : MonoBehaviour, IService
+    [DefaultExecutionOrder(-100)]
+    public class TableManager : IService
     {
-        private Dictionary<int, Transform> _tables;
+        private Dictionary<int, Transform> _tables = new();
 
-        private void Awake()
+        public Transform GetTableByPoint(int pointId)
         {
-            ServiceContainer.Instance.Register(this);
+            return _tables[pointId];
+        }
+
+        public void MergeTable(List<PointTablePair> pairs, int offset)
+        {
+            foreach (var pair in pairs)
+                _tables.Add(pair.point + offset, pair.table);
         }
     }
 }

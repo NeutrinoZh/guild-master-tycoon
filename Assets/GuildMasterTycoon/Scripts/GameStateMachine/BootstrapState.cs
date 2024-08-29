@@ -17,6 +17,7 @@ namespace GMT.GSM
             ));
             ServiceContainer.Instance.Register(new BuildingFactory());
             ServiceContainer.Instance.Register(new PlayerInput());
+            ServiceContainer.Instance.Register(new TableManager());
         }
     }
 }
