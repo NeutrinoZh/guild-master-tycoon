@@ -11,6 +11,12 @@ namespace GMT.GamePlay
         [SerializeField] private float _moveSensitivity = 1f;
         [SerializeField] private float _scaleSensitivity = 2f;
 
+        [SerializeField]
+        private Bounds _bounds = new(
+            new Vector3(0, 0, 0),
+             new Vector3(60, 60, 0)
+        );
+
         private Camera _camera;
         private PlayerInput _playerInput;
 
@@ -88,8 +94,14 @@ namespace GMT.GamePlay
                 return;
 
             var position = _playerInput.InputActions.Camera.Position.ReadValue<Vector2>();
-            transform.position = _startPosition - Camera.main.ScreenToViewportPoint(position - _touchPosition) * (_camera.orthographicSize * _moveSensitivity);
+            position = _startPosition - Camera.main.ScreenToViewportPoint(position - _touchPosition) * (_camera.orthographicSize * _moveSensitivity);
 
+            if (position.x > _bounds.max.x) position.x = _bounds.max.x;
+            if (position.x < _bounds.min.x) position.x = _bounds.min.x;
+            if (position.y > _bounds.max.y) position.y = _bounds.max.y;
+            if (position.y < _bounds.min.y) position.y = _bounds.min.y;
+
+            transform.position = new Vector3(position.x, position.y, -10);
         }
 
         private void DisableDrag(InputAction.CallbackContext _) => _drag = false;

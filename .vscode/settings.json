@@ -2,7 +2,7 @@
     "files.exclude": {
         "**/*.meta": true
     },
-    "dotnet.defaultSolution": "GuildMasterTycoon.sln",
+    "dotnet.defaultSolution": "guild-master-tycoon.sln",
     "cSpell.words": [
         "Dont",
         "Encryptor",
