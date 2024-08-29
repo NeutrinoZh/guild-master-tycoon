@@ -39,18 +39,29 @@ namespace GMT.GamePlay
         {
             _playerInput.InputActions.Camera.Touch.performed += EnableDrag;
             _playerInput.InputActions.Camera.Touch.canceled += DisableDrag;
+            _playerInput.InputActions.Camera.Scroll.performed += Scroll;
         }
 
         private void OnDisable()
         {
             _playerInput.InputActions.Camera.Touch.performed -= EnableDrag;
             _playerInput.InputActions.Camera.Touch.canceled -= DisableDrag;
+            _playerInput.InputActions.Camera.Scroll.performed -= Scroll;
         }
 
         private void Update()
         {
             Drag();
             Scale();
+        }
+
+        private void Scroll(InputAction.CallbackContext ctx)
+        {
+            _camera.orthographicSize = Mathf.Clamp(
+                _camera.orthographicSize - ctx.ReadValue<Vector2>().y / 100 * _scaleSensitivity,
+                _minCameraScale,
+                _maxCameraScale
+            );
         }
 
         private void Scale()

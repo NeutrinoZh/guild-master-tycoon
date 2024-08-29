@@ -46,6 +46,15 @@ namespace GMT
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Scroll"",
+                    ""type"": ""Value"",
+                    ""id"": ""74d333a4-ed43-4d60-aa51-36534ba19c25"",
+                    ""expectedControlType"": ""Delta"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -70,6 +79,17 @@ namespace GMT
                     ""action"": ""Touch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9ca517fb-8097-44c9-8e70-0ec7ec692c23"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -80,6 +100,7 @@ namespace GMT
             m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
             m_Camera_Position = m_Camera.FindAction("Position", throwIfNotFound: true);
             m_Camera_Touch = m_Camera.FindAction("Touch", throwIfNotFound: true);
+            m_Camera_Scroll = m_Camera.FindAction("Scroll", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -143,12 +164,14 @@ namespace GMT
         private List<ICameraActions> m_CameraActionsCallbackInterfaces = new List<ICameraActions>();
         private readonly InputAction m_Camera_Position;
         private readonly InputAction m_Camera_Touch;
+        private readonly InputAction m_Camera_Scroll;
         public struct CameraActions
         {
             private @GMTActions m_Wrapper;
             public CameraActions(@GMTActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Position => m_Wrapper.m_Camera_Position;
             public InputAction @Touch => m_Wrapper.m_Camera_Touch;
+            public InputAction @Scroll => m_Wrapper.m_Camera_Scroll;
             public InputActionMap Get() { return m_Wrapper.m_Camera; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -164,6 +187,9 @@ namespace GMT
                 @Touch.started += instance.OnTouch;
                 @Touch.performed += instance.OnTouch;
                 @Touch.canceled += instance.OnTouch;
+                @Scroll.started += instance.OnScroll;
+                @Scroll.performed += instance.OnScroll;
+                @Scroll.canceled += instance.OnScroll;
             }
 
             private void UnregisterCallbacks(ICameraActions instance)
@@ -174,6 +200,9 @@ namespace GMT
                 @Touch.started -= instance.OnTouch;
                 @Touch.performed -= instance.OnTouch;
                 @Touch.canceled -= instance.OnTouch;
+                @Scroll.started -= instance.OnScroll;
+                @Scroll.performed -= instance.OnScroll;
+                @Scroll.canceled -= instance.OnScroll;
             }
 
             public void RemoveCallbacks(ICameraActions instance)
@@ -195,6 +224,7 @@ namespace GMT
         {
             void OnPosition(InputAction.CallbackContext context);
             void OnTouch(InputAction.CallbackContext context);
+            void OnScroll(InputAction.CallbackContext context);
         }
     }
 }
